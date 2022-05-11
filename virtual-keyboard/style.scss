@@ -33,6 +33,14 @@ body {
             font-size: 4.2rem;
             border-radius: 0.5rem;
         }
+        .description {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.4rem;
+            color: $additional-grey;
+        }
         .info {
             display: flex;
             justify-content: space-between;

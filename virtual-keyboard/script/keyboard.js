@@ -16,27 +16,29 @@ export class Keyboard {
 
             let key = document.querySelector(`.${event.code.toLowerCase()}`);
 
-            if (event.code === 'CapsLock') {
+            if (key) {
+                if (event.code === 'CapsLock') {
 
-                if (key.classList.contains('active')) {
-                    key.classList.remove('active');
-                    this.caps = false;
+                    if (key.classList.contains('active')) {
+                        key.classList.remove('active');
+                        this.caps = false;
+                    } else {
+                        key.classList.add('active');
+                        this.caps = true;
+                    }
                 } else {
                     key.classList.add('active');
-                    this.caps = true;
                 }
-            } else {
-                key.classList.add('active');
-            }
 
-            if (event.code === 'ArrowUp' ||
-                event.code === 'ArrowDown' ||
-                event.code === 'ArrowLeft' ||
-                event.code === 'ArrowRight') {
-                console.log(event.code)
-            } else {
-                event.preventDefault();
-                key.dispatchEvent(createKeyEvent(event, 'keydown'));
+                if (event.code === 'ArrowUp' ||
+                    event.code === 'ArrowDown' ||
+                    event.code === 'ArrowLeft' ||
+                    event.code === 'ArrowRight') {
+                    console.log(event.code)
+                } else {
+                    event.preventDefault();
+                    key.dispatchEvent(createKeyEvent(event, 'keydown'));
+                }
             }
 
         });
@@ -45,21 +47,21 @@ export class Keyboard {
 
             let key = document.querySelector(`.${event.code.toLowerCase()}`);
 
-            if (event.code !== 'CapsLock') {
-                key.classList.remove('active');
+            if (key) {
+                if (event.code !== 'CapsLock') {
+                    key.classList.remove('active');
+                }
+
+                if (event.code === 'ArrowUp' ||
+                    event.code === 'ArrowDown' ||
+                    event.code === 'ArrowLeft' ||
+                    event.code === 'ArrowRight') {
+                    console.log(event.code)
+                } else {
+                    event.preventDefault();
+                    key.dispatchEvent(createKeyEvent(event, 'keyup'));
+                }
             }
-
-            if (event.code === 'ArrowUp' ||
-                event.code === 'ArrowDown' ||
-                event.code === 'ArrowLeft' ||
-                event.code === 'ArrowRight') {
-                console.log(event.code)
-            } else {
-                event.preventDefault();
-                key.dispatchEvent(createKeyEvent(event, 'keyup'));
-            }
-
-
         });
     }
 
